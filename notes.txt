@@ -1,0 +1,14 @@
+only show object above detected plane - cut plane?
+
+depth buffer für den kellerinnenraum
+
+
+
+
+
+tap to spawn object on plane
+
+controls to spin around, zoom,...
+swipe to spin (lock left and richt)
+pinch and pull to zoom in and out
+tap to change render mode?
