@@ -14,7 +14,10 @@ public class PlaceObject : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private ARPlaneManager aRPlaneManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
-    private bool placed = 0;
+    private bool placed = false;
+    private GameObject obj;
+    private float initialDistance;
+    private Vector3 initialScale;
 
     private void Awake()
     {
@@ -37,30 +40,59 @@ public class PlaceObject : MonoBehaviour
     }
 
     private void FingerDown(EnhancedTouch.Finger finger) {
-        if (finger.index != 0) return;
+        if (finger.index != 0 && !placed) return;
 
-        if (aRRaycastManager.Raycast(finger.currentTouch.screenPosition, hits, TrackableType.PlaneWithinPolygon)) {
+        if (aRRaycastManager.Raycast(finger.currentTouch.screenPosition, hits, TrackableType.PlaneWithinPolygon)) { //spawn object
             foreach (ARRaycastHit hit in hits) {
                 Pose pose = hit.pose;
                 // check if object to spawn does already exist in scene
-                if (placed == 0)
+                if (!placed)
                 {
-                    GameObject obj = Instantiate(prefab, position: pose.position, pose.rotation);
+                    obj = Instantiate(prefab, position: pose.position, pose.rotation);
 
                     if (aRPlaneManager.GetPlane(trackableId: hit.trackableId).alignment == PlaneAlignment.HorizontalUp)
                     {
                         Vector3 position = obj.transform.position;
                         Vector3 cameraPosition = Camera.main.transform.position;
                         Vector3 direction = cameraPosition - position;
+
+                        // Rotation anpassen, damit haupteingang immer vorne ist bei spawn
                         // Quaternion targetRotation = Quaternion.LookRotation(forward: direction);
                         Vector3 targetRotationEuler = Quaternion.LookRotation(forward: direction).eulerAngles;
                         Vector3 scaledEuler = Vector3.Scale(targetRotationEuler, obj.transform.up.normalized); //(0,1,0)
                         Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
                         obj.transform.rotation = obj.transform.rotation * targetRotation;
+                    
                     }
-                    placed = 1;
+                    placed = true;
                 }
             }
+        }
+
+        if (Input.touchCount == 2){
+            var touch0 = Input.GetTouch(0);
+            var touch1 = Input.GetTouch(1);
+
+            if (touch0.phase == TouchPhase.Ended || touch0.phase == TouchPhase.Canceled ||
+               touch1.phase == TouchPhase.Ended || touch1.phase == TouchPhase.Canceled){
+                return;
+            }
+
+            if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
+            {
+                initialDistance = Vector2.Distance(touch0.position, touch1.position);
+                initialScale = obj.transform.localScale;
+            }
+            else {
+                var currentDistance = Vector2.Distance(touch0.position, touch1.position);
+                if (Mathf.Approximately(initialDistance,0)) {
+                    return;
+                }
+                var factor = currentDistance / initialDistance;
+                obj.transform.localScale = initialScale * factor;
+            
+            }
+
         }
     }
 }

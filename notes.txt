@@ -1,9 +1,3 @@
-only show object above detected plane - cut plane?
-
-depth buffer für den kellerinnenraum
-
-
-
 
 
 tap to spawn object on plane
@@ -12,3 +6,20 @@ controls to spin around, zoom,...
 swipe to spin (lock left and richt)
 pinch and pull to zoom in and out
 tap to change render mode?
+
+todo: 
+
+nur eine plane auf tisch detecten
+
+objekt drehen und skalieren können (vllt auch verschieben)
+
+raycasting ausschalten, nachdem objekt gespawned wurde
+
+
+
+dinge auf baustelle anpassen
+
+texturen:
+concrete textur finden die nicht nur wiederholt
+orangene farbe und material rausfinden
+face oben auf rückseite fixen (uv-mapping)
