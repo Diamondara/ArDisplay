@@ -15,6 +15,8 @@ objekt drehen und skalieren können (vllt auch verschieben)
 
 raycasting ausschalten, nachdem objekt gespawned wurde
 
+https://shawnlehner.github.io/ARMaker/
+qr code gen
 
 
 dinge auf baustelle anpassen
