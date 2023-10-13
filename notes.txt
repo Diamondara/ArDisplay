@@ -23,6 +23,8 @@ einzige möglichkeit wie man das gebäude immer an den gleichen ort bekommt ist 
 man platziert (3) marker um die baustelle herum und wenn einer davon gescanned wird weis die paa welche der (3) cameras sie benutzen soll. dann wird die aktuelle position auf die kameraansicht gesetzt und das gebäude richtig angezeigt. die szene mit dem gebäude in der richtigen orientierung wird in der app gespeichert. falls die 3 kameras nicht funktionieren wird eine scene für jeden scanpunkt erstellt. wichtig ist hierbei die ursprüngliche rotation richtig zu bekommen. worldmap funktioniert nicht weil es ios only ist. 
 die app muss den referenzpunkt so exakt wie möglich identifizieren können. wenn man leicht schief steht muss der abweichende winkel und abstand erkannt werden.
 
+vuforia für besseres ar marker tracking
+
 
 texturen:
 concrete textur finden die nicht nur wiederholt
