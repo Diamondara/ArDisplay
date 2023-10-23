@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+[RequireComponent(typeof(ARPlaneManager))]
+
 public class ARPlacement : MonoBehaviour
 {
-
+    public GameObject sessionOrigin;
+    public GameObject arPlaneManager;
     public GameObject arObjectToSpawn;
     private GameObject spawnedObject;
     private Pose PlacementPose;
@@ -14,6 +17,12 @@ public class ARPlacement : MonoBehaviour
     private bool placementPoseIsValid = false;
     private float initialDistance;
     private Vector3 initialScale;
+    private bool isPlaced = false;
+
+    private Vector2 startPos;
+    private Vector2 direction;
+    private float multiplierY = 0.02f;
+    private float multiplierX = 0.02f;
 
     void Start()
     {
@@ -33,6 +42,48 @@ public class ARPlacement : MonoBehaviour
         // and scale gameobject depending on the pinch distance
         // we also need to ignore if the pinch distance is small (cases where two touches are registered accidently)
 
+        if (Input.touchCount == 1 && isPlaced) { //Rotate Object with 1 Finger
+
+            var touchZero = Input.GetTouch(0);
+            // save position where touch happened
+
+            switch (touchZero.phase)
+            {
+                case TouchPhase.Began:
+                    startPos = touchZero.position;
+                    direction = Vector3.zero;
+                    break;
+
+                case TouchPhase.Moved:
+                    direction = touchZero.position - startPos;
+                    if (direction.magnitude > 0.05f)
+                    { 
+                        // var localAngles=this.transform.localEulerAngles;
+                        // localAngles.y+=direction.y*multiplierY;
+                        // this.transform.localEulerAngles=localAngles;
+
+                        var globalAngles = spawnedObject.transform.eulerAngles;
+                        globalAngles.y += -direction.x * multiplierX;
+                        spawnedObject.transform.eulerAngles = globalAngles;
+
+                        var dotVal1 = Vector3.Dot(Camera.main.transform.forward, spawnedObject.transform.right);
+                        var dotVal2 = Vector3.Dot(Camera.main.transform.forward, spawnedObject.transform.up);
+                        var dotVal3 = Vector3.Dot(Camera.main.transform.right, spawnedObject.transform.up);
+
+
+                        // Debug.Log("Value"+(dotVal>0?true:false));
+                        // MyDebug.Log("Value"+(dotVal>0?true:false));
+
+                        spawnedObject.transform.localRotation *= Quaternion.Euler(0, -direction.y * multiplierY * (dotVal1 > 0 ? -1 : 1) * (dotVal1 > 0 ? -1 : 1) * (dotVal3 > 0 ? -1 : 1), 0);
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    break;
+                case TouchPhase.Canceled:
+                    break;
+            }
+        }
 
         if (Input.touchCount == 2)
         {
@@ -89,8 +140,21 @@ public class ARPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, PlacementPose.rotation);
+        isPlaced = true;
+        DestroyPlaneTracking();
+
     }
 
+    void DestroyPlaneTracking() {
+        //Destroy(sessionOrigin.GetComponent("ARPlaneManager"));
+        //Destroy(sessionOrigin.GetComponent("ARRaycastManager"));
+        ARPlaneManager planeManager = GetComponent<ARPlaneManager>();
+        planeManager.enabled = !planeManager.enabled;
+        foreach (var plane in planeManager.trackables)
+        {
+            plane.gameObject.SetActive(false);
+        }
 
+    }
 }
 

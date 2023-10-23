@@ -136,7 +136,13 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: 1eb95d77acb39444e8cf44313496a874, type: 2}
+  - {fileID: 8083273543421111227, guid: 58f40b12bbc864f3c96c6505a9a1e1e3, type: 2}
+  - {fileID: 11400000, guid: 82f08c7bb7cde414580cfcbf2d1bc10f, type: 2}
+  - {fileID: -7951306059330812925, guid: 6bb381a8ba31f114d9724357633b4625, type: 2}
+  - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
+  - {fileID: 4800000, guid: 0945859e5a1034c2cb6dce53cb4fb899, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -872,11 +878,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 84ee9dd2-eb3a-43f0-b384-0b0536b07b9b
+  cloudProjectId: a20d3727-586d-40e4-b55f-b7c0e0672773
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: ArDisplay (1)
-  organizationId: xxmitakuxx
+  organizationId: diamondara
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

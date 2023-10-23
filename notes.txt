@@ -1,3 +1,7 @@
+Ziel für heute:
+- Stationäres modell  ohne lean drehen, skalieren und richtig platzieren mit marker
+- image tracking marker auf bild und davon abhängig objekt daneben spawnen
+
 
 
 tap to spawn object on plane
