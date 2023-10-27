@@ -52,21 +52,23 @@ public class PlaceObject : MonoBehaviour
                 // check if object to spawn does already exist in scene
                 if (!placed)
                 {
-                    obj = Instantiate(prefab, position: pose.position, pose.rotation);
-
+                    obj = Instantiate(prefab, position: pose.position, pose.rotation,prefab.transform.parent) as GameObject;
+                  //  this.transform.localScale = new Vector3(0.0002f, 0.0002f, 0.0002f);
                     if (aRPlaneManager.GetPlane(trackableId: hit.trackableId).alignment == PlaneAlignment.HorizontalUp)
                     {
                         Vector3 position = obj.transform.position;
                         Vector3 cameraPosition = Camera.main.transform.position;
                         Vector3 direction = cameraPosition - position;
+                      
                          
                         // Rotation anpassen, damit haupteingang immer vorne ist bei spawn
-                         Quaternion targetRotation = Quaternion.LookRotation(forward: direction);
-                       // Vector3 targetRotationEuler = Quaternion.LookRotation(forward: direction).eulerAngles;
-                       // Vector3 scaledEuler = Vector3.Scale(targetRotationEuler, obj.transform.up.normalized); //(0,1,0)
-                       // Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
-                       // obj.transform.rotation = obj.transform.rotation * targetRotation;
-                    
+                        // Quaternion targetRotation = Quaternion.LookRotation(forward: direction);
+                        // Vector3 targetRotationEuler = Quaternion.LookRotation(forward: direction).eulerAngles;
+                        // Vector3 scaledEuler = Vector3.Scale(targetRotationEuler, obj.transform.up.normalized); //(0,1,0)
+                        // Quaternion targetRotation = Quaternion.Euler(euler: scaledEuler);
+                        // obj.transform.rotation = obj.transform.rotation * targetRotation;
+                  
+                     
                     }
                     placed = true;
                 }
