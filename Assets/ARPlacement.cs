@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -18,6 +20,8 @@ public class ARPlacement : MonoBehaviour
     private float initialDistance;
     private Vector3 initialScale;
     private bool isPlaced = false;
+    public bool enableTouchControls = true;
+    Text testtext;
 
     private Vector2 startPos;
     private Vector2 direction;
@@ -26,7 +30,9 @@ public class ARPlacement : MonoBehaviour
 
     void Start()
     {
+        TouchSimulation.Enable();
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
+      
     }
 
     // need to update placement indicator, placement pose and spawn 
@@ -42,7 +48,7 @@ public class ARPlacement : MonoBehaviour
         // and scale gameobject depending on the pinch distance
         // we also need to ignore if the pinch distance is small (cases where two touches are registered accidently)
 
-        if (Input.touchCount == 1 && isPlaced) { //Rotate Object with 1 Finger
+        if (Input.touchCount == 1 && isPlaced && enableTouchControls) { //Rotate Object with 1 Finger
 
             var touchZero = Input.GetTouch(0);
             // save position where touch happened
@@ -85,7 +91,7 @@ public class ARPlacement : MonoBehaviour
             }
         }
 
-        if (Input.touchCount == 2)
+        if (Input.touchCount == 2 && isPlaced && enableTouchControls)
         {
             var touchZero = Input.GetTouch(0);
             var touchOne = Input.GetTouch(1);
@@ -140,6 +146,8 @@ public class ARPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, PlacementPose.rotation);
+        testtext = GameObject.Find("testtext").GetComponent<Text>();
+        testtext.text = "";
         isPlaced = true;
         DestroyPlaneTracking();
 

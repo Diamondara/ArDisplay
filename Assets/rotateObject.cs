@@ -4,26 +4,11 @@ using UnityEngine;
 
 public class rotateObject : MonoBehaviour
 {
-    public GameObject objectRotate;
-
-    public float rotateSpeed = 50f;
-    bool rotateStatus = false;
+    GameObject objectRotate;
 
     public void RotateObject() {
-
-        if (rotateStatus == false)
-        {
-            rotateStatus = true;
-        }
-        else {
-            rotateStatus = false;
-        }
+        objectRotate = GameObject.Find("testscale(Clone)");
+        objectRotate.transform.Rotate(Vector3.up, 45);
     }
 
-    private void Update()
-    {
-        if(rotateStatus == true) {
-            objectRotate.transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
-        }
-    }
 }
