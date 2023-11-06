@@ -13,6 +13,10 @@ public class ARPlacement : MonoBehaviour
     public GameObject sessionOrigin;
     public GameObject arPlaneManager;
     public GameObject arObjectToSpawn;
+    public GameObject etageZero;
+    public GameObject etageOne;
+    public GameObject etageTwo;
+    public GameObject etageThree;
     private GameObject spawnedObject;
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
@@ -162,6 +166,32 @@ public class ARPlacement : MonoBehaviour
         {
             plane.gameObject.SetActive(false);
         }
+
+    }
+
+    // replace models with one another
+    void swapToZero()
+    { 
+    
+    }
+
+    void swapToOne()
+    {
+
+    }
+    
+    void swapToTwo()
+    {
+
+    }
+    
+    void swapToThree()
+    {
+
+    }
+    
+    void swapToWhole()
+    {
 
     }
 }
