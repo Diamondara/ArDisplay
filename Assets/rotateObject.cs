@@ -7,7 +7,7 @@ public class rotateObject : MonoBehaviour
     GameObject objectRotate;
 
     public void RotateObject() {
-        objectRotate = GameObject.Find("testscale(Clone)");
+        objectRotate = GameObject.Find("modelchanger(Clone)");
         objectRotate.transform.Rotate(Vector3.up, 45);
     }
 

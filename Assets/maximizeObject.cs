@@ -7,12 +7,13 @@ public class maximizeObject : MonoBehaviour
 {
     GameObject objectBigger;
     Text testtext;
-    public float step = 0.001f;
-
+    public float step = 0.5f;
+     
     public void MaximizeObject()
     {
-        objectBigger = GameObject.Find("testscale(Clone)");
-        if (objectBigger.transform.localScale.x + step < 0.01f)
+        testtext = GameObject.Find("testtext").GetComponent<Text>();
+        objectBigger = GameObject.Find("modelchanger(Clone)");
+        if (objectBigger.transform.localScale.x + step < 4f)
         {
             testtext.text = "";
            objectBigger.transform.localScale += new Vector3(step,step,step);
@@ -25,7 +26,7 @@ public class maximizeObject : MonoBehaviour
     public void MinimizeObject()
     {
         testtext = GameObject.Find("testtext").GetComponent<Text>();
-        objectBigger = GameObject.Find("testscale(Clone)");
+        objectBigger = GameObject.Find("modelchanger(Clone)");
         if (objectBigger.transform.localScale.x - step > 0)
         {
             testtext.text = "";
