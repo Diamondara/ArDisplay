@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class swapVisuals : MonoBehaviour
 {
     public GameObject modelchanger;
     GameObject placedobject;
     private int state = 4; // active state 4 = base, 0-3 = etage 0-3
-    Text testtext;
-
+    TextMeshProUGUI testtext;
     swapVisuals() {
       //  zero = modelchanger.transform.GetChild(0).gameObject;
       //  one = modelchanger.transform.GetChild(1).gameObject;
@@ -19,30 +19,30 @@ public class swapVisuals : MonoBehaviour
     }
     public void toggleModels() {
         placedobject = GameObject.Find("modelchanger(Clone)");
-        testtext = GameObject.Find("testtext").GetComponent<Text>();
+        testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
 
        // modelchanger = GameObject.Find("modelchanger(Clone)");
         switch (state) {
             case 0:
                 swapToBase();
-                testtext.text = "0 " + placedobject.transform.GetChild(0).gameObject.name;
+                testtext.text = "Komplettansicht";
                 //modelchanger.transform.GetChild(0).gameObject.active = true;
                 break;
             case 1:
                 swapToZero();
-                testtext.text = "1" + placedobject.transform.GetChild(1).gameObject.name;
+                testtext.text = "Erdgeschoss";
                 break;
             case 2:
                 swapToOne();
-                testtext.text = "2" + placedobject.transform.GetChild(2).gameObject.name;
+                testtext.text = "1. Etage";
                 break;
             case 3:
                 swapToTwo();
-                testtext.text = "3" + placedobject.transform.GetChild(3).gameObject.name;
+                testtext.text = "2. Etage";
                 break;
             case 4:
                 swapToThree();
-                testtext.text = "4" + placedobject.transform.GetChild(4).gameObject.name;
+                testtext.text = "3. Etage";
                 break;
             default:
                 break;

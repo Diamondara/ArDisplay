@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using TMPro;
 
 [RequireComponent(typeof(ARPlaneManager))]
 
@@ -21,7 +22,7 @@ public class ARPlacement : MonoBehaviour
     private Vector3 initialScale;
     private bool isPlaced = false;
     public bool enableTouchControls = true;
-    Text testtext;
+    TextMeshProUGUI testtext;
 
     private Vector2 startPos;
     private Vector2 direction;
@@ -146,8 +147,8 @@ public class ARPlacement : MonoBehaviour
     void ARPlaceObject()
     {
         spawnedObject = Instantiate(arObjectToSpawn, PlacementPose.position, PlacementPose.rotation);
-        testtext = GameObject.Find("testtext").GetComponent<Text>();
-        testtext.text = "";
+        testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
+        testtext.text = "Komplettansicht";
         isPlaced = true;
         DestroyPlaneTracking();
 

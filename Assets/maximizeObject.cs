@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class maximizeObject : MonoBehaviour
 {
     GameObject objectBigger;
-    Text testtext;
+    TextMeshProUGUI testtext;
     public float step = 0.5f;
      
     public void MaximizeObject()
     {
-        testtext = GameObject.Find("testtext").GetComponent<Text>();
+        testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
         objectBigger = GameObject.Find("modelchanger(Clone)");
         if (objectBigger.transform.localScale.x + step < 4f)
         {
-            testtext.text = "";
+            testtext.text = "Objekt größer skaliert.";
            objectBigger.transform.localScale += new Vector3(step,step,step);
         }
         else { 
@@ -25,11 +26,11 @@ public class maximizeObject : MonoBehaviour
 
     public void MinimizeObject()
     {
-        testtext = GameObject.Find("testtext").GetComponent<Text>();
+        testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
         objectBigger = GameObject.Find("modelchanger(Clone)");
         if (objectBigger.transform.localScale.x - step > 0)
         {
-            testtext.text = "";
+            testtext.text = "Objekt kleiner skaliert.";
            objectBigger.transform.localScale -= new Vector3(step, step, step);
         }
         else {
