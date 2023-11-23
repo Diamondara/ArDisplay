@@ -23,6 +23,7 @@ public class ARPlacement : MonoBehaviour
     private bool isPlaced = false;
     public bool enableTouchControls = true;
     TextMeshProUGUI testtext;
+    TextMeshProUGUI massstab;
 
     private Vector2 startPos;
     private Vector2 direction;
@@ -150,6 +151,8 @@ public class ARPlacement : MonoBehaviour
         testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
         testtext.text = "Komplettansicht";
         isPlaced = true;
+        massstab = GameObject.Find("massstab").GetComponent<TextMeshProUGUI>();
+        massstab.text = "Maﬂstab: 1:" + Mathf.Round(1 / spawnedObject.transform.localScale.x * 1f) / 1f;
         DestroyPlaneTracking();
 
     }
