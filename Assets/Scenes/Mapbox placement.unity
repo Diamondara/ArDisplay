@@ -934,6 +934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9b4aa932662f449afdc57d0d789285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lat: 51.671002
+  lon: 8.330836
+  spawnObject: {fileID: 4585062864792846287, guid: 2025e76cffdb1d24699ef4ebf62dc69c,
+    type: 3}
 --- !u!4 &212175866532230322
 Transform:
   m_ObjectHideFlags: 0
