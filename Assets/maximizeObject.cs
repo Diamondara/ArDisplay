@@ -16,14 +16,14 @@ public class maximizeObject : MonoBehaviour
         testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
         massstab = GameObject.Find("massstab").GetComponent<TextMeshProUGUI>();
         objectBigger = GameObject.Find("modelchanger(Clone)");
-        if (objectBigger.transform.localScale.x + step < 0.01f)
+        if (objectBigger.transform.localScale.x + step < 0.02f)
         {
-            testtext.text = "Objekt größer skaliert.";
+            testtext.text = "Objekt grÃ¶ÃŸer skaliert.";
            objectBigger.transform.localScale += new Vector3(step,step,step);
-            massstab.text = "Maßstab: 1:" + Mathf.Round(1 / objectBigger.transform.localScale.x * 1f) / 1f;
+            massstab.text = "MaÃŸstab: 1:" + Mathf.Round(1 / objectBigger.transform.localScale.x * 1f) / 1f;
         }
         else { 
-            testtext.text = "Das Objekt kann nicht größer skaliert werden.";
+            testtext.text = "Das Objekt kann nicht grÃ¶ÃŸer skaliert werden.";
         }
     }
 
@@ -36,7 +36,7 @@ public class maximizeObject : MonoBehaviour
         {
             testtext.text = "Objekt kleiner skaliert.";
            objectBigger.transform.localScale -= new Vector3(step, step, step);
-            massstab.text = "Maßstab: 1:" + Mathf.Round(1/objectBigger.transform.localScale.x*1f)/1f;
+            massstab.text = "MaÃŸstab: 1:" + Mathf.Round(1/objectBigger.transform.localScale.x*1f)/1f;
         }
         else {
             testtext.text = "Das Objekt kann nicht kleiner skaliert werden.";

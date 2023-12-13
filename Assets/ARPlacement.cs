@@ -152,7 +152,7 @@ public class ARPlacement : MonoBehaviour
         testtext.text = "Komplettansicht";
         isPlaced = true;
         massstab = GameObject.Find("massstab").GetComponent<TextMeshProUGUI>();
-        massstab.text = "Maﬂstab: 1:" + Mathf.Round(1 / spawnedObject.transform.localScale.x * 1f) / 1f;
+        massstab.text = "Ma√üstab: 1:" + Mathf.Round(1 / spawnedObject.transform.localScale.x * 1f) / 1f;
         DestroyPlaneTracking();
 
     }

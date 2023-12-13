@@ -19,7 +19,7 @@ public class toggleActive : MonoBehaviour
         testtext = GameObject.Find("testtext").GetComponent<TextMeshProUGUI>();
         testtext.text = "Komplettansicht";
         massstab = GameObject.Find("massstab").GetComponent<TextMeshProUGUI>();
-        massstab.text = "Maﬂstab: 1:" + Mathf.Round(1 / spawnedObject.transform.localScale.x * 1f) / 1f;
+        massstab.text = "Ma√üstab: 1:" + Mathf.Round(1 / spawnedObject.transform.localScale.x * 1f) / 1f;
         isPlaced = true;
     }
 }

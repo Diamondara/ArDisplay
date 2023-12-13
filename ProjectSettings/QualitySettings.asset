@@ -302,7 +302,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 3
     name: AR Settings
-    pixelLightCount: 4
+    pixelLightCount: 1
     shadows: 1
     shadowResolution: 2
     shadowProjection: 0
