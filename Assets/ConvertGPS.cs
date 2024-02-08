@@ -28,4 +28,12 @@ public class ConvertGPS : MonoBehaviour
         // place object on camera
         Instantiate(spawnObject, positionFinder, rotationObject);
     }
+
+    public float getLat() {
+        return lat;
+    }
+    public float getLon()
+    {
+        return lon;
+    }
 }
