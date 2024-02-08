@@ -88,11 +88,12 @@ public class GPSLocation : MonoBehaviour
     {
         if (Input.location.status == LocationServiceStatus.Running)
         {
-            testtext.text = "Lat: " + Input.location.lastData.latitude.ToString() + "\nLon: " + Input.location.lastData.longitude.ToString() +
+            testtext.text = "Lat: " + Input.location.lastData.latitude.ToString() + "\nLon: " + Input.location.lastData.longitude.ToString(); 
               //  "\nalt: " + Input.location.lastData.altitude.ToString() + "\nacc: " + Input.location.lastData.horizontalAccuracy.ToString() +
-                "\ntime: " + Input.location.lastData.timestamp.ToString() + "\ncompass: " + Input.compass.magneticHeading.ToString();
+               // "\ntime: " + Input.location.lastData.timestamp.ToString() +
+               // "\ncompass: " + Input.compass.magneticHeading.ToString();
             distanceBird = Math.Round(DistanceTo(Input.location.lastData.latitude, Input.location.lastData.longitude, lat, lon) * 100) / 100;
-            distance.text = "Distance: " + distanceBird.ToString() + " m to " + lat + " " + lon;
+            distance.text = "Abstand: " + distanceBird.ToString() + " m to " + lat + " " + lon;
             Debug.Log("DISTANCE: " +distanceBird.ToString());
 
             // rotate everything based on compass
@@ -129,7 +130,7 @@ public class GPSLocation : MonoBehaviour
             // rotate 340° to fit scene
           //*  spawnObject.transform.position = positionFinder;
             // spawnObject.transform.Rotate(new Vector3(0,rotateValue,0));
-            pos.text = "unity pos " + positionFinder.x + " " + positionFinder.y + " " + positionFinder.z;
+          //  pos.text = "unity pos " + positionFinder.x + " " + positionFinder.y + " " + positionFinder.z;
             //  determineLocation();
           //*  Instantiate(spawnObject);
         }
